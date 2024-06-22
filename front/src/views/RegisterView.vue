@@ -23,15 +23,15 @@ const register = async () => {
     // 기존 이름이 없는 경우에만 진행
     if (options) {
       const originChallenge = JSON.parse(options).challenge;
-      const publicKey = await authStore.decodeOptions(options)
+      const publicKey = await authStore.decodeRegisterOptions(options)
 
       // navigator.credentials.create()를 사용하여 자격 증명을 생성
       const credentials = await navigator.credentials.create({
         publicKey
       })
       // 자격 증명이 성공적으로 생성된 경우 서버에 완료 요청
-      const encodedCredentials = authStore.encodeCredentials(credentials)
-      await authStore.registerComplete(username.value, encodedCredentials, originChallenge)
+      const encodedCredentials = await authStore.encodeRegisterCredentials(credentials)
+      authStore.registerComplete(username.value, encodedCredentials, originChallenge)
     } else {
       console.log('기존 등록된 이름이 있습니다.');
     }

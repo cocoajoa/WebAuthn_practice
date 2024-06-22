@@ -127,3 +127,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # 장고와 vue간 충돌 방지
 CORS_ALLOW_ALL_ORIGINS = True
+
+# 로그인 인증 토큰 보내주기 설정 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+from datetime import timedelta
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),  # AccessToken의 유효 기간 설정
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),     # RefreshToken의 유효 기간 설정
+}

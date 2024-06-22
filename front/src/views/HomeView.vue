@@ -8,9 +8,8 @@
 
 <script setup>
 import { useAuthStore } from '@/stores/AuthService'
-import { computed } from 'vue';
 const authStore = useAuthStore()
-const isLoggedIn = computed(() => authStore.isLoggedIn)
+const isLoggedIn = authStore.isLoggedIn
 
 </script>
 

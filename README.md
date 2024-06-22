@@ -1,4 +1,4 @@
-# WebAuthn_practice(미완성 회원가입 1단계까지만) (회원가입 2단계, 로그인 2단계, 총 4단계)
+# WebAuthn_practice(로그인 토큰 외 완성) (회원가입 2단계, 로그인 2단계, 총 4단계)
 패스키 찍먹
 
 # 시용 라이브러리 (requirements.txt 참고)
@@ -17,7 +17,7 @@
 - 가상환경 실행
 
 3. pip install requirements
-- django, djangorestframework, django-cors-headers, 그리고 [webauthn](https://github.com/duo-labs/py_webauthn/tree/master) 설치한 것들임
+- django, djangorestframework, django-cors-headers, djangorestframework-jwt, 그리고 [webauthn](https://github.com/duo-labs/py_webauthn/tree/master) 설치한 것들임
 
 4. (백엔드) cd back, python manage.py migrate, python manage.py runserver
 -  장고 돌릴 준비
@@ -35,6 +35,8 @@
       ```
       DOMException: The relying party ID is not a registrable domain suffix of, nor equal to the current domain.
       ```
+2. passkey는 sign_count를 세지 않는다.
+    - [webauthn](https://github.com/duo-labs/py_webauthn/tree/master)에서 서명 후 1 증가했는지를 검사하는데 로그인 인증시 증가하지 않아서 뭐가 문제인가 찾아봤는데 결론적으로 passkey에서는 의미가 없기 때문..  ~~내 2시간..~~ 
 
 ### vue
 1. 받아오긴 json 형태로 받아오는데 navigator.credentials.create() 실행이 안됨..(두 가지 원인)
