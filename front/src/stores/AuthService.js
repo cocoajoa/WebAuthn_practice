@@ -1,12 +1,15 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 export const useAuthStore = defineStore('auth', () => {
   const API_URL = 'http://localhost:8000/api/v1/'
 
-  const isLoggedin = ref(false)
+  const token = ref(null)
+  const isLoggedin = computed(() => {
+    return token.value !== null
+  })
   const router = useRouter()
 
   const registerBegin = (username) => {
@@ -60,8 +63,8 @@ export const useAuthStore = defineStore('auth', () => {
     })
       .then(res => {
         console.log(res.data)
-        isLoggedin.value = true
-        console.log(isLoggedin)
+        token.value = res.data.access_token
+        console.log(token.value)
         router.push({ name: 'home' })
       })
       .catch((err) => {
@@ -158,5 +161,8 @@ export const useAuthStore = defineStore('auth', () => {
     return encodedCredentials
   }
 
-  return { registerBegin, registerComplete, loginBegin, loginComplete, decodeRegisterOptions, encodeRegisterCredentials, decodeLoginOptions, encodeLoginCredentials, isLoggedin }
+  return { 
+    registerBegin, registerComplete, loginBegin, loginComplete, decodeRegisterOptions, 
+    encodeRegisterCredentials, decodeLoginOptions, encodeLoginCredentials, isLoggedin, token,
+  }
 })

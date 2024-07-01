@@ -102,3 +102,7 @@ def LoginCompleteView(request):
         return Response({'message': 'login failed'}, status=status.HTTP_400_BAD_REQUEST)
 
 
+@csrf_exempt
+@api_view(['POST'])
+def LogoutView():
+    return 

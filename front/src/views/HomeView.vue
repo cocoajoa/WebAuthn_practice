@@ -9,7 +9,8 @@
 <script setup>
 import { useAuthStore } from '@/stores/AuthService'
 const authStore = useAuthStore()
-const isLoggedIn = authStore.isLoggedIn
+const isLoggedIn = authStore.isLoggedin
+const token = authStore.token
 
 </script>
 

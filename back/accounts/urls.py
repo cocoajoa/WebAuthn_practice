@@ -7,4 +7,5 @@ urlpatterns = [
     path('register/complete/', views.RegisterCompleteView),
     path('login/begin/', views.LoginBeginView),
     path('login/complete/', views.LoginCompleteView),
+    path('logout/', views.LogoutView),
 ]

@@ -1,4 +1,4 @@
-# WebAuthn_practice(로그인 토큰 외 완성) (회원가입 2단계, 로그인 2단계, 총 4단계)
+# WebAuthn_practice (회원가입 2단계, 로그인 2단계, 총 4단계)
 패스키 찍먹
 
 # 시용 라이브러리 (requirements.txt 참고)
@@ -16,16 +16,13 @@
 2. source venv/bin/activate(mac), source venv/scripts/activate(window)
 - 가상환경 실행
 
-3. pip install requirements
-- django, djangorestframework, django-cors-headers, djangorestframework-jwt, 그리고 [webauthn](https://github.com/duo-labs/py_webauthn/tree/master) 설치한 것들임
+3. (백엔드) cd back, pip install requirements, python manage.py migrate, python manage.py runserver
+  - django, djangorestframework, django-cors-headers, djangorestframework-jwt, 그리고 [webauthn](https://github.com/duo-labs/py_webauthn/tree/master) 설치한 것들임
 
-4. (백엔드) cd back, python manage.py migrate, python manage.py runserver
--  장고 돌릴 준비
-
-5. (프론트엔드) cd front, npm install, npm run dev
+4. (프론트엔드) cd front, npm install, npm run dev
 - vue 실행
 
-6. vue 로컬 서버로 회원가입, 로그인해보기
+5. vue 로컬 서버로 회원가입, 로그인해보기
 
 ## 하면서 막혔던 부분들
 ### 장고
